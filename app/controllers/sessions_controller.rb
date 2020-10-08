@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
         @user = User.find_by(name: params[:name])
        if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
+        byebug
         redirect_to @user
        else 
         flash[:error] = "Login in credentials are incorrect"
